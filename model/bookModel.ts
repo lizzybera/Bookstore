@@ -32,6 +32,6 @@ const bookModel = new mongoose.Schema({
     price : {
         type : Number
     },
-})
+}, {timestamps : true})
 
 export default mongoose.model<iBookData>("books", bookModel)
