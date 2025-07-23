@@ -1,17 +1,18 @@
 import mongoose, { Schema } from "mongoose";
 
 interface iAuth {
-    name : string,
-    email : string
-    password : string,
-    image : string,
-    verified : boolean,
-    token : string,
+    name : string;
+    email : string;
+    password : string;
+    image : string;
+    verified : boolean;
+    token : string;
+    book: {}[];
 }
 
-interface iAuthData extends iAuth, mongoose.Document {}
+interface iAuthData extends iAuth, mongoose.Document{}
 
-const authModel = new Schema({
+const authModel = new Schema<iAuthData>({
     name : {
         type : String
     },
@@ -32,6 +33,10 @@ const authModel = new Schema({
     token : {
         type : String
     },
+    book:[{
+        type: mongoose.Types.ObjectId,
+        ref:"books"
+    }]
 }, {timestamps: true})
 
 export default mongoose.model<iAuthData>("users", authModel)

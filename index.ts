@@ -2,8 +2,11 @@ import express, { Application, Request, Response } from "express"
 import database from "./config/database"
 import bookRouter from "./router/bookRouter"
 import authRouter from "./router/authRouter"
+import dotenv from "dotenv"
 
-const port: number = 2000
+dotenv.config()
+
+const port: number = parseInt(process.env.PORT!)
 
 const app: Application = express()
 
@@ -27,5 +30,5 @@ app.get("/", (req: Request, res: Response) => {
 })
 
 app.listen(port, () => {
-    console.log("Server is listening");
+    console.log(`Server is listening ${port}`);
 })

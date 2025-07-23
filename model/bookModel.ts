@@ -1,37 +1,37 @@
 import mongoose from "mongoose";
 
 interface iBooks {
-    title? : string;
-    authorName? : string;
-    details? : string;
-    ISBN? : string;
-    image? : string;
-    price? : number;
+    title?: string;
+    authorName?: string;
+    details?: string;
+    ISBN?: string;
+    image?: string;
+    price?: number;
 }
 
-interface iBookData extends iBooks, mongoose.Document{}
+interface iBookData extends iBooks, mongoose.Document { }
 
 const bookModel = new mongoose.Schema({
-    title : {
-        type : String,
-        required : [true, "Please input Book title"],
-        unique : true
+    title: {
+        type: String,
+        required: [true, "Please input Book title"],
+        unique: true
     },
-    authorName : {
-        type : String
+    authorName: {
+        type: String
     },
-    details : {
-        type : String
+    details: {
+        type: String
     },
-    ISBN : {
-        type : String
+    ISBN: {
+        type: String
     },
-    image : {
-        type : String
+    image: {
+        type: String
     },
-    price : {
-        type : Number
+    price: {
+        type: Number
     },
-}, {timestamps : true})
+}, { timestamps: true })
 
 export default mongoose.model<iBookData>("books", bookModel)
